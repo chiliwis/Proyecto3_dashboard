@@ -2,18 +2,64 @@ console.log("Entro a main.js")
 
 const base_url = "https://zoo-animal-api.herokuapp.com/animals/rand/4";
 const tblAnimales = document.getElementById("tblAnimales");
-// const animal_number = generateRandomNumber(1,200);
+const grafica = document.getElementById('myChart').getContext('2d');
 
-function cargarAnimales(){
+function cargarAnimales() {
     fetch(base_url,
-    {
-        method:"GET"
-    }
+        {
+            method: "GET"
+        }
     )
         .then(response => response.json())
         .then(result => {
             console.log(result);
-            tblAnimales.innerHTML="";
+            tblAnimales.innerHTML = "";
+
+            const config = {
+                type: 'radar',
+                data: result,
+                options: {
+                  elements: {
+                    line: {
+                      borderWidth: 3
+                    }
+                  }
+                },
+              };
+
+              const etiquetas = {
+                labels: [
+                  'Nombre',
+                  'Tiempo de Vida',
+                  'Peso Min',
+                  'Peso Max',
+                  'Ubicacion',
+                  'Genero'
+                ],
+                datasets: [{
+                  label: 'My First Dataset',
+                  data: [result],
+                  fill: true,
+                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  pointBackgroundColor: 'rgb(255, 99, 132)',
+                  pointBorderColor: '#fff',
+                  pointHoverBackgroundColor: '#fff',
+                  pointHoverBorderColor: 'rgb(255, 99, 132)'
+                }, {
+                  label: 'My Second Dataset',
+                  data: [result],
+                  fill: true,
+                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                  borderColor: 'rgb(54, 162, 235)',
+                  pointBackgroundColor: 'rgb(54, 162, 235)',
+                  pointBorderColor: '#fff',
+                  pointHoverBackgroundColor: '#fff',
+                  pointHoverBorderColor: 'rgb(54, 162, 235)'
+                }]
+              };
+
+
             for (const animales of result) {
                 let tr = `<tr>
                 <td>${animales.id}</td>
@@ -28,9 +74,9 @@ function cargarAnimales(){
                 tblAnimales.innerHTML += tr;
             }
         })
-        .catch(error => {
+        .catch((error) => {
             console.log("Error al cargar animales");
-})
+        });
 }
 // function generateRandomNumber (min=0, max=200) {
 //     let rand = Math.random();
