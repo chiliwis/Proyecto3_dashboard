@@ -1,11 +1,11 @@
 console.log("Entro a main.js")
 
-const base_url = "https://zoo-animal-api.herokuapp.com";
+const base_url = "https://zoo-animal-api.herokuapp.com/animals/rand/4";
 const tblAnimales = document.getElementById("tblAnimales");
-const animal_number = generateRandomNumber(1,200);
+// const animal_number = generateRandomNumber(1,200);
 
 function cargarAnimales(){
-    fetch(base_url + "/animals/rand",
+    fetch(base_url,
     {
         method:"GET"
     }
@@ -32,13 +32,8 @@ function cargarAnimales(){
             console.log("Error al cargar animales");
 })
 }
-
-function generateRandomNumber (min=0, max=200) {
-    let rand = Math.random();
-    return rand;
-}
-// function agregarAnimales() {
-//     console.log("Entro a agregar Usuario");
+// function generateRandomNumber (min=0, max=200) {
+//     let rand = Math.random();
+//     return rand;
 // }
-
 cargarAnimales();
