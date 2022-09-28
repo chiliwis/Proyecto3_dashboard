@@ -16,12 +16,12 @@ function cargarAnimales(){
             tblAnimales.innerHTML="";
             for (const animales of result) {
                 let tr = `<tr>
-                <td>1</td>
-                <td>${animales.name}</td>
+                <td>${animales.id}</td>
                 <td>${animales.latin_name}</td>
-                <td>${animales.animal_type}</td>
                 <td>${animales.lifespan}</td>
-                <td>${animales.habitat}</td>
+                <td>${animales.animal_type}</td>
+                <td>${animales.weight_min}</td>
+                <td>${animales.weight_max}</td>
                 <td>${animales.geo_range}</td>
            
                 </tr>`;
