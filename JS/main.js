@@ -21,6 +21,7 @@ function cargarAnimales() {
                 options: {
                   elements: {
                     line: {
+                    
                       borderWidth: 3
                     }
                   }
@@ -37,7 +38,7 @@ function cargarAnimales() {
                   'Genero'
                 ],
                 datasets: [{
-                  label: 'My First Dataset',
+                  label: 'Nombre',
                   data: [result],
                   fill: true,
                   backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -47,7 +48,7 @@ function cargarAnimales() {
                   pointHoverBackgroundColor: '#fff',
                   pointHoverBorderColor: 'rgb(255, 99, 132)'
                 }, {
-                  label: 'My Second Dataset',
+                  label: 'Tiempo de Vida',
                   data: [result],
                   fill: true,
                   backgroundColor: 'rgba(54, 162, 235, 0.2)',
