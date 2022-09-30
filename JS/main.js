@@ -4,6 +4,11 @@ const base_url = "https://zoo-animal-api.herokuapp.com/animals/rand/4";
 const tblAnimales = document.getElementById("tblAnimales");
 const grafica = document.getElementById('myChart').getContext('2d');
 
+ 
+// animalesStatus.push(lifespan,weightmin,weightmax);  
+// tblAnimales.lifespan = vidaAnimales;
+//   myChart.update();
+
 function cargarAnimales() {
   fetch(base_url,
     {
@@ -17,12 +22,13 @@ function cargarAnimales() {
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
+       
         type: 'bar',
         data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: ['Tiempo de vida', 'Peso Min', 'Peso Max'],
           datasets: [{
             label: 'Tiempo de Vida',
-            data: [12, 19, 3, 5, 2, 3],
+            data : [tblAnimales.lifespan],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -39,13 +45,15 @@ function cargarAnimales() {
               'rgba(153, 102, 255, 1)',
               'rgba(255, 159, 64, 1)'
             ],
-            borderWidth: 1
+            borderWidth: 2
           }]
         },
+      
         options: {
           scales: {
             y: {
-              beginAtZero: true
+              beginAtZero: true,
+              max: 50
             }
           }
         }
@@ -70,8 +78,7 @@ function cargarAnimales() {
       console.log("Error al cargar animales");
     });
 }
-// function generateRandomNumber (min=0, max=200) {
-//     let rand = Math.random();
-//     return rand;
-// }
+
+
+
 cargarAnimales();
